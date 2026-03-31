@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Laptop Shop - Login</title>
+
+<!-- Bootstrap CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+    body {
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .login-card {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .login-title {
+        font-weight: bold;
+        color: #2c5364;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-control {
+        border-radius: 10px;
+    }
+
+    .btn-login {
+        background: #2c5364;
+        color: white;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    .btn-login:hover {
+        background: #203a43;
+    }
+
+    .btn-cancel {
+        border-radius: 10px;
+    }
+
+    .logo {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        color: #2c5364;
+        margin-bottom: 10px;
+    }
+
+    .logo span {
+        color: #007bff;
+    }
+</style>
+
+</head>
+<body>
+
+<form action="LoginServlet" method="post">
+    <div class="login-card">
+        
+        <div class="logo">💻 Laptop<span>Shop</span></div>
+        <h4 class="login-title">Login to Your Account</h4>
+
+        <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" name="uname" class="form-control" placeholder="Enter username" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" name="pass" class="form-control" placeholder="Enter password" required>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-login">Login</button>
+            <button type="reset" class="btn btn-secondary btn-cancel">Cancel</button>
+            
+             <button type="button" class="btn btn-login"> <a href="register.html" >Register Now</a></button>
+        </div>
+
+    </div>
+</form>
+
+</body>
+</html>

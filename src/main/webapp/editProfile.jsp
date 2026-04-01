@@ -1,9 +1,9 @@
-<%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.util.JdbcLoader"%>
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 
 <%
 session = request.getSession(false);
@@ -12,11 +12,9 @@ if (session == null || session.getAttribute("uname") == null) {
 %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <title>Session Expired</title>
-
 <style>
 body{
     display:flex;
@@ -25,24 +23,16 @@ body{
     height:100vh;
     background:linear-gradient(135deg,#1e2a38,#00c6ff);
     color:white;
-    font-family:Arial;
 }
 .box{
     padding:40px;
     background:rgba(0,0,0,0.6);
     border-radius:10px;
-    text-align:center;
-    animation:fadeIn 1s;
-}
-@keyframes fadeIn{
-    from{opacity:0} to{opacity:1}
 }
 </style>
-
 <script>
 setTimeout(()=>{window.location.href="Login.html"},3000);
 </script>
-
 </head>
 <body>
 <div class="box">
@@ -68,9 +58,10 @@ ResultSet rs = st.executeQuery();
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Profile Dashboard</title>
+<title>Edit Profile</title>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
 <style>
 *{
@@ -127,7 +118,7 @@ body{
 
 /* CARD */
 .card{
-    max-width:450px;
+    max-width:500px;
     margin:auto;
     padding:30px;
     border-radius:20px;
@@ -148,11 +139,23 @@ body{
     margin-bottom:20px;
 }
 
-/* INFO */
-.info{
+/* INPUTS */
+.form-group{
+    margin:12px 0;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:5px;
+    font-size:14px;
+}
+
+.form-group input{
+    width:100%;
     padding:10px;
-    margin:10px 0;
-    border-bottom:1px solid rgba(255,255,255,0.2);
+    border:none;
+    border-radius:6px;
+    outline:none;
 }
 
 /* BUTTONS */
@@ -166,25 +169,26 @@ body{
     margin:5px;
     border:none;
     border-radius:5px;
-    text-decoration:none;
+    cursor:pointer;
     transition:0.3s;
 }
 
-.edit{
+.update{
     background:#00c6ff;
     color:black;
 }
 
-.delete{
+.cancel{
     background:#ff4d4d;
     color:white;
+    text-decoration:none;
+    display:inline-block;
 }
 
 .btn:hover{
     transform:scale(1.1);
 }
 </style>
-
 </head>
 
 <body>
@@ -209,23 +213,43 @@ while(rs.next()){
 %>
 
 <div class="card">
-    <h2>👤 User Profile</h2>
+    <h2>✏ Edit Profile</h2>
 
-    <div class="info"><b>ID:</b> <%=rs.getInt("uid")%></div>
-    <div class="info"><b>Name:</b> <%=rs.getString("name")%></div>
-    <div class="info"><b>Email:</b> <%=rs.getString("email")%></div>
-    <div class="info"><b>Contact:</b> <%=rs.getString("contact")%></div>
-    <div class="info"><b>Username:</b> <%=rs.getString("uname")%></div>
-    <div class="info"><b>Password:</b> ******</div>
+    <form action="updateProfile.jsp" method="post">
 
-    <div class="actions">
-        <a href="editProfile.jsp" class="btn edit">Edit</a>
-        <a href="delete.jsp?uid=<%=rs.getInt("uid")%>" 
-           class="btn delete"
-           onclick="return confirm('Are you sure to delete?')">
-           Delete
-        </a>
-    </div>
+        <input type="hidden" name="uid" value="<%=rs.getInt("uid")%>">
+
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" value="<%=rs.getString("name")%>">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="text" name="email" value="<%=rs.getString("email")%>">
+        </div>
+
+        <div class="form-group">
+            <label>Contact</label>
+            <input type="text" name="contact" value="<%=rs.getString("contact")%>">
+        </div>
+
+        <div class="form-group">
+            <label>Username</label>
+            <input type="text" name="uname" value="<%=rs.getString("uname")%>">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="text" name="password" value="<%=rs.getString("password")%>">
+        </div>
+
+        <div class="actions">
+            <button type="submit" class="btn update">Update</button>
+            <a href="profile.jsp" class="btn cancel">Cancel</a>
+        </div>
+
+    </form>
 </div>
 
 <% } %>

@@ -196,7 +196,7 @@ body{
     <a href="home.jsp"><i class="fas fa-home"></i> Home</a>
     <a href="products.jsp"><i class="fas fa-laptop"></i> Products</a>
     <a href="about.jsp"><i class="fas fa-info-circle"></i> About</a>
-    <a href="contact.jsp"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="myorders.jsp"><i class="fas fa-envelope"></i> Myorders</a>
     <a href="profile.jsp"><i class="fas fa-user"></i> Profile</a>
     <a href="logout.jsp"><i class="fas fa-sign-out-alt"></i> Logout</a>
 </div>

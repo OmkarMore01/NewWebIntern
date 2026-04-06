@@ -259,7 +259,7 @@ String uname = (String) session.getAttribute("uname");
         <a href="#">Home</a>
         <a href="products.jsp">Products</a>
         <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="myorders.jsp">Myorders</a>
          <a href="profile.jsp">Profile</a>
         <a href="logout.jsp" class="logout"><i class="fas fa-sign-out-alt"></i></a>
     </div>
